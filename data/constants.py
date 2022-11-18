@@ -72,35 +72,60 @@ REFLACX_REPETITIVE_ALL_LABEL_COLS = [
     "Pleural abnormality",
 ]
 
-
 DEFAULT_REFLACX_LABEL_COLS: List[str] = [
+    # "Fibrosis",
+    # "Quality issue",
+    # "Wide mediastinum",
+    # "Fracture",
+    # "Airway wall thickening",
+
+    ######################
+    # "Hiatal hernia",
+    # "Acute fracture",
+    # "Interstitial lung disease",
+    # "Enlarged hilum",
+    # "Abnormal mediastinal contour",
+    # "High lung volume / emphysema",
+    # "Pneumothorax",
+    # "Lung nodule or mass",
+    # "Groundglass opacity",
+    ######################
+    "Pulmonary edema",
     "Enlarged cardiac silhouette",
+    "Consolidation",
     "Atelectasis",
     "Pleural abnormality",
-    "Consolidation",
-    "Pulmonary edema",
-    #  'Groundglass opacity', #6th disease.
+    # "Support devices",
 ]
 
-DEFAULT_REFLACX_ALL_DISEASES: List[str] = [
-    "Airway wall thickening",
-    "Atelectasis",
-    "Consolidation",
-    "Enlarged cardiac silhouette",
-    "Fibrosis",
-    "Groundglass opacity",
-    "Pneumothorax",
-    "Pulmonary edema",
-    "Wide mediastinum",
-    "Abnormal mediastinal contour",
-    "Acute fracture",
-    "Enlarged hilum",
-    "Hiatal hernia",
-    "High lung volume / emphysema",
-    "Interstitial lung disease",
-    "Lung nodule or mass",
-    "Pleural abnormality",
-]
+# [
+#     "Enlarged cardiac silhouette",
+#     "Atelectasis",
+#     "Pleural abnormality",
+#     "Consolidation",
+#     "Pulmonary edema",
+#     #  'Groundglass opacity', #6th disease.
+# ]
+
+# DEFAULT_REFLACX_ALL_DISEASES: List[str] = [
+#     "Airway wall thickening",
+#     "Atelectasis",
+#     "Consolidation",
+#     "Enlarged cardiac silhouette",
+#     "Fibrosis",
+#     "Groundglass opacity",
+#     "Pneumothorax",
+#     "Pulmonary edema",
+#     "Wide mediastinum",
+#     "Abnormal mediastinal contour",
+#     "Acute fracture",
+#     "Enlarged hilum",
+#     "Hiatal hernia",
+#     "High lung volume / emphysema",
+#     "Interstitial lung disease",
+#     "Lung nodule or mass",
+#     "Pleural abnormality",
+# ]
 
 DEFAULT_REFLACX_REPETITIVE_LABEL_MAP: Dict[str, List[str]] = {
     "Airway wall thickening": ["Airway wall thickening"],
@@ -130,17 +155,16 @@ DEFAULT_REFLACX_REPETITIVE_LABEL_MAP: Dict[str, List[str]] = {
 
 DEFAULT_REFLACX_BOX_COORD_COLS: List[str] = ["xmin", "ymin", "xmax", "ymax"]
 DEFAULT_REFLACX_BOX_FIX_COLS: List[str] = DEFAULT_REFLACX_BOX_COORD_COLS + ["certainty"]
-DEFAULT_REFLACX_PATH_COLS : List[str]= [
+DEFAULT_REFLACX_PATH_COLS: List[str] = [
     "image_path",
-    "fixations_path",
-    "anomaly_location_ellipses_path",
-    "bbox_paths",
+    "fixation_path",
+    "bbox_path",
 ]
 
 
-'''
+"""
 IOU values during evaluation.
-'''
+"""
 
 
 FULL_IOU_THRS = np.array(
@@ -170,6 +194,4 @@ FULL_IOU_THRS = np.array(
 )
 
 IOU_THRS_5_TO_95 = np.array([0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95])
-
-
 
