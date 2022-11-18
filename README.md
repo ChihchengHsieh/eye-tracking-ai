@@ -180,5 +180,9 @@ Labels used:
  ['Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
 ```
 
+![image](https://user-images.githubusercontent.com/37566901/202744583-9f5e8fb4-5196-4a75-a1d2-1435672fe3b7.png)
+![image](https://user-images.githubusercontent.com/37566901/202744600-0689da51-72f3-49e5-a6bf-9d1803d23fdd.png)
+
+
 
 ### Exp8
