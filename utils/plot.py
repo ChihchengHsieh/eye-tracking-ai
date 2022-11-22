@@ -542,3 +542,46 @@ def plot_result(
 
     return bb_fig, seg_fig
 
+from models.load import  get_trained_model
+from data.constants import DEFAULT_REFLACX_LABEL_COLS
+import utils.print as print_f
+from utils.train import num_params
+
+def plot_training_progress(trained_models, device):
+    for trained_model in trained_models:
+        _, train_info, _ = get_trained_model(
+            trained_model,
+            DEFAULT_REFLACX_LABEL_COLS,
+            device,
+            rpn_nms_thresh=0.3,
+            box_detections_per_img=10,
+            box_nms_thresh=0.2,
+            rpn_score_thresh=0.0,
+            box_score_thresh=0.05,
+        )
+
+        print_f.print_title("Training Info")
+        print(train_info)
+
+        plot_train_val_evaluators(
+            train_ap_ars=train_info.train_ap_ars, val_ap_ars=train_info.val_ap_ars,
+        )
+
+        plot_losses(train_info.train_data, train_info.val_data)
+
+
+def print_num_params(trained_models, device):
+    for trained_model in trained_models:
+        model, train_info, _ = get_trained_model(
+            trained_model,
+            DEFAULT_REFLACX_LABEL_COLS,
+            device,
+            image_size=512,
+            rpn_nms_thresh=0.3,
+            box_detections_per_img=10,
+            box_nms_thresh=0.2,
+            rpn_score_thresh=0.0,
+            box_score_thresh=0.05,
+        )
+
+        print(f"| [{train_info.model_setup.name}] | #Params: [{num_params(model):,}] |")

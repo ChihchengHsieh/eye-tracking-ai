@@ -1,10 +1,11 @@
 # eye-tracking-ai
 
-
 # Experiments
+
 Let's first get a trainable model.
 
 ## Exp1 (0.0114)
+
 ```
 ========================================For Training [All_label_testing]========================================
 ModelSetup(name='All_label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='resnet18', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='multiply', fusion_residule=False, gt_in_train_till=0, measure_test=True)
@@ -17,7 +18,6 @@ ModelSetup(name='All_label_testing', use_heatmaps=False, with_fixations=False, w
 ================================================================================================================
 
 ```
-
 
 ## Exp2 (0.0331)
 
@@ -71,8 +71,7 @@ label_testing will use mask, [64] layers.
 Max AP on test: [0.0416]
 ```
 
-
-## Exp4 
+## Exp4
 
 ```
 ========================================For Training [label_testing]========================================
@@ -97,7 +96,6 @@ label_testing will use mask, [64] layers.
 [model.roi_heads.mask_head]: 1,917,952
 Max AP on test: [0.2022]
 ```
-
 
 ## Exp5
 
@@ -151,7 +149,6 @@ label_testing will use mask, [64] layers.
 Max AP on test: [0.1804]
 ```
 
-
 ## Exp7 Top 5 labels (0.26) - baseline
 
 ```
@@ -180,9 +177,116 @@ Labels used:
  ['Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
 ```
 
-![image](https://user-images.githubusercontent.com/37566901/202744583-9f5e8fb4-5196-4a75-a1d2-1435672fe3b7.png)
-![image](https://user-images.githubusercontent.com/37566901/202744600-0689da51-72f3-49e5-a6bf-9d1803d23fdd.png)
+### Exp8 (Atelectasis only) - [0.0096]
+
+```
+========================================For Training [label_testing]========================================
+ModelSetup(name='label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='mobilenet_v3', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='add', fusion_residule=False, gt_in_train_till=10, measure_test=True, eval_freq=10)
+============================================================================================================
+
+Best AP validation model has been saved to: [val_ar_0_0783_ap_0_0102_test_ar_0_0769_ap_0_0096_epoch10_11-19-2022 03-22-24_label_testing]
+Best AR validation model has been saved to: [val_ar_0_0783_ap_0_0102_test_ar_0_0769_ap_0_0096_epoch10_11-19-2022 03-22-23_label_testing]
+The final model has been saved to: [val_ar_0_0420_ap_0_0076_test_ar_0_0346_ap_0_0035_epoch100_11-19-2022 16-24-15_label_testing]
+
+============================================================================================================
+Using pretrained backbone. mobilenet_v3
+label_testing will use mask, [64] layers.
+[model]: 3,489,911
+[model.backbone]: 1,258,848
+[model.rpn]: 41,803
+[model.roi_heads]: 2,189,260
+[model.roi_heads.box_head]: 204,928
+[model.roi_heads.box_head.fc6]: 200,768
+[model.roi_heads.box_head.fc7]: 4,160
+[model.roi_heads.box_predictor]: 650
+[model.roi_heads.mask_head]: 1,917,952
+Max AP on test: [0.0096]
+Labels used:
+ ['Atelectasis']
+```
+
+### Exp9 (top6)
+
+```
+
+========================================For Training [label_testing]========================================
+ModelSetup(name='label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='mobilenet_v3', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='add', fusion_residule=False, gt_in_train_till=10, measure_test=True, eval_freq=10)
+============================================================================================================
+
+Best AP validation model has been saved to: [val_ar_0_5650_ap_0_2376_test_ar_0_5607_ap_0_2611_epoch80_11-20-2022 09-39-54_label_testing]
+Best AR validation model has been saved to: [val_ar_0_5923_ap_0_2304_test_ar_0_5914_ap_0_2604_epoch40_11-20-2022 01-40-56_label_testing]
+The final model has been saved to: [val_ar_0_4789_ap_0_2030_test_ar_0_4949_ap_0_2373_epoch100_11-20-2022 13-38-27_label_testing]
+
+============================================================================================================
+Using pretrained backbone. mobilenet_v3
+label_testing will use mask, [64] layers.
+[model]: 3,491,861
+[model.backbone]: 1,258,848
+[model.rpn]: 41,803
+[model.roi_heads]: 2,191,210
+[model.roi_heads.box_head]: 204,928
+[model.roi_heads.box_head.fc6]: 200,768
+[model.roi_heads.box_head.fc7]: 4,160
+[model.roi_heads.box_predictor]: 2,275
+[model.roi_heads.mask_head]: 1,917,952
+Max AP on test: [0.2612]
+Labels used: ['Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality', 'Support devices']
+```
+the `supported device` label here is found not detectable. Therefore, we will try to train a model only for this label.
+
+# Exp10 (only supported device)
+
+```
+========================================For Training [label_testing]========================================
+ModelSetup(name='label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='mobilenet_v3', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='add', fusion_residule=False, gt_in_train_till=10, measure_test=True, eval_freq=10)
+============================================================================================================
+
+Best AP validation model has been saved to: [val_ar_0_0000_ap_0_0000_test_ar_0_0000_ap_0_0000_epoch1_11-20-2022 22-00-19_label_testing]
+Best AR validation model has been saved to: [val_ar_0_0000_ap_0_0000_test_ar_0_0000_ap_0_0000_epoch1_11-20-2022 22-00-18_label_testing]
+The final model has been saved to: [val_ar_0_0000_ap_0_0000_test_ar_0_0000_ap_0_0000_epoch100_11-21-2022 10-38-44_label_testing]
+
+============================================================================================================
+Using pretrained backbone. mobilenet_v3
+label_testing will use mask, [64] layers.
+[model]: 3,489,911
+[model.backbone]: 1,258,848
+[model.rpn]: 41,803
+[model.roi_heads]: 2,189,260
+[model.roi_heads.box_head]: 204,928
+[model.roi_heads.box_head.fc6]: 200,768
+[model.roi_heads.box_head.fc7]: 4,160
+[model.roi_heads.box_predictor]: 650
+[model.roi_heads.mask_head]: 1,917,952
+Max AP on test: [0.0000]
+Labels used:
+ ['Support devices']
+```
 
 
+# Exp 11(100epoch not enough)
 
-### Exp8
+```
+========================================For Training [label_testing]========================================
+ModelSetup(name='label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='mobilenet_v3', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='add', fusion_residule=False, gt_in_train_till=10, measure_test=True, eval_freq=10)
+============================================================================================================
+
+Best AP validation model has been saved to: [val_ar_0_2357_ap_0_0475_test_ar_0_2608_ap_0_0488_epoch40_11-21-2022 20-46-57_label_testing]
+Best AR validation model has been saved to: [val_ar_0_2562_ap_0_0439_test_ar_0_2728_ap_0_0419_epoch90_11-22-2022 06-57-45_label_testing]
+The final model has been saved to: [val_ar_0_2463_ap_0_0393_test_ar_0_2829_ap_0_0399_epoch100_11-22-2022 09-01-15_label_testing]
+
+============================================================================================================
+Using pretrained backbone. mobilenet_v3
+label_testing will use mask, [64] layers.
+[model]: 3,491,861
+[model.backbone]: 1,258,848
+[model.rpn]: 41,803
+[model.roi_heads]: 2,191,210
+[model.roi_heads.box_head]: 204,928
+[model.roi_heads.box_head.fc6]: 200,768
+[model.roi_heads.box_head.fc7]: 4,160
+[model.roi_heads.box_predictor]: 2,275
+[model.roi_heads.mask_head]: 1,917,952
+Max AP on test: [0.0488]
+Labels used:
+ ['Groundglass opacity', 'Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
+```
