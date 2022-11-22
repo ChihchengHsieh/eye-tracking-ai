@@ -290,3 +290,7 @@ Max AP on test: [0.0488]
 Labels used:
  ['Groundglass opacity', 'Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
 ```
+
+![image](https://user-images.githubusercontent.com/37566901/203262882-7732c348-b93f-4a7f-be7f-898681dbffef.png)
+
+the 6th label alwas have -1 here, why? Is it a bug? test it with 7 diseasese.
