@@ -87,7 +87,7 @@ DEFAULT_REFLACX_LABEL_COLS: List[str] = [
     # "Abnormal mediastinal contour",
     # "High lung volume / emphysema",
     # "Pneumothorax",
-    # "Lung nodule or mass",
+    "Lung nodule or mass",
     "Groundglass opacity",
     ######################
     "Pulmonary edema",

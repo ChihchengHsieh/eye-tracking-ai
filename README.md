@@ -291,6 +291,38 @@ Labels used:
  ['Groundglass opacity', 'Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
 ```
 
-![image](https://user-images.githubusercontent.com/37566901/203262882-7732c348-b93f-4a7f-be7f-898681dbffef.png)
 
-the 6th label alwas have -1 here, why? Is it a bug? test it with 7 diseasese.
+# Exp12 (5andLMandGO)
+
+```
+========================================For Training [label_testing]========================================
+ModelSetup(name='label_testing', use_heatmaps=False, with_fixations=False, with_pupil=False, with_1st_third_fixations=False, with_2nd_third_fixations=False, with_rad_silence=False, with_rad_speaking=False, save_early_stop_model=True, record_training_performance=True, backbone='mobilenet_v3', optimiser='sgd', lr=0.001, weight_decay=1e-05, image_backbone_pretrained=True, heatmap_backbone_pretrained=True, image_size=512, backbone_out_channels=64, batch_size=4, warmup_epochs=0, lr_scheduler='ReduceLROnPlateau', reduceLROnPlateau_factor=0.1, reduceLROnPlateau_patience=999, reduceLROnPlateau_full_stop=True, multiStepLR_milestones=100, multiStepLR_gamma=0.1, representation_size=64, mask_hidden_layers=64, using_fpn=False, use_mask=True, fuse_conv_channels=64, box_head_dropout_rate=0, fuse_depth=0, fusion_strategy='add', fusion_residule=False, gt_in_train_till=10, measure_test=True, eval_freq=10)
+============================================================================================================
+
+Best AP validation model has been saved to: [val_ar_0_1868_ap_0_0314_test_ar_0_2216_ap_0_0421_epoch10_11-26-2022 20-33-47_label_testing]
+Best AR validation model has been saved to: [val_ar_0_1868_ap_0_0314_test_ar_0_2216_ap_0_0421_epoch10_11-26-2022 20-33-46_label_testing]
+The final model has been saved to: [val_ar_0_0907_ap_0_0103_test_ar_0_1007_ap_0_0123_epoch200_11-28-2022 08-46-07_label_testing]
+
+============================================================================================================
+Using pretrained backbone. mobilenet_v3
+label_testing will use mask, [64] layers.
+[model]: 3,492,251
+[model.backbone]: 1,258,848
+[model.rpn]: 41,803
+[model.roi_heads]: 2,191,600
+[model.roi_heads.box_head]: 204,928
+[model.roi_heads.box_head.fc6]: 200,768
+[model.roi_heads.box_head.fc7]: 4,160
+[model.roi_heads.box_predictor]: 2,600
+[model.roi_heads.mask_head]: 1,917,952
+Max AP on test: [0.0421]
+Labels used:
+ ['Lung nodule or mass', 'Groundglass opacity', 'Pulmonary edema', 'Enlarged cardiac silhouette', 'Consolidation', 'Atelectasis', 'Pleural abnormality']
+```
+
+
+
+
+<!-- ![image](https://user-images.githubusercontent.com/37566901/203262882-7732c348-b93f-4a7f-be7f-898681dbffef.png)
+
+the 6th label alwas have -1 here, why? Is it a bug? test it with 7 diseasese. -->
